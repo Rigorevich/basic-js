@@ -7,14 +7,21 @@ import { NotImplementedError } from '../extensions/index.js';
  * Your task is to check by given string inputString
  * whether it's a MAC-48 address or not.
  *
- * @param {Number} inputString
+ * @param {String} inputString
  * @return {Boolean}
  *
  * @example
  * For 00-1B-63-84-45-E6, the output should be true.
  *
  */
-export default function isMAC48Address(/* n */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function isMAC48Address(inputString) {
+    const mass = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+    let bool = true
+    inputString.split('-').forEach((group) => {
+        group.split('').forEach((item) => {
+            if (!mass.includes(item))
+                bool = false
+        })
+    })
+    return bool
 }
